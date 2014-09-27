@@ -3,6 +3,8 @@ xiaoma
 
  简单可用的 基于web的 android 拼音输入法  pinyin input method
 
+![预览](https://raw.githubusercontent.com/gowithwind/xiaoma/master/preview.png)
+
 初心
 ======
 撸管不求人
