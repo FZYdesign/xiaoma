@@ -90,6 +90,7 @@ body{
                 </div>
                 <div ng-show='input'>
                     <div style="width:90%;height:2.5em;overflow:hidden;display:inline-block;" >
+                      <div class="choice">~</div>
                         <div class="choice" ng-repeat='choice in choices.slice(0,10) track by $index' ng-click="send(choice)">
                                 {{choice}}
                         </div>
@@ -108,7 +109,7 @@ body{
                 <div class="key" ng-repeat='key in keys2' ng-click="on(key)">{{key}}</div>
               </div>
               <div class="row">
-                <div class="key system_key" style="width: 2em">↑</div>
+                <div class="key system_key" style="width: 2em" ng-click="reload()">↑</div>
                 <div class="key" ng-repeat='key in keys3' ng-click="on(key)">{{key}}</div>
                 <div class="key system_key" style="width: 2em" ng-click="backspace()">←</div>
               </div>
@@ -116,12 +117,12 @@ body{
                 <div class="key system_key" style="width: 2.25em" ng-click="en=!en;" ng-style="{'color':colors[en]}">123</div>
                 <div class="key system_key" style="width: 2.25em">☺</div>
                 <div class="key" style="width: 6.5em; color: #71717D; font-weight: 600;" ng-click="on(' ')">space</div>
-                <div class="key system_key" style="width: 4em" ng-click="reload()">return</div>
+                <div class="key system_key" style="width: 4em" ng-click="on_return()">return</div>
               </div>
             </div>
             <!-- choices box -->
               <div style="position:fixed;z-index:100;bottom:0px;background-color:#D4D8DB;padding:3px;" ng-show="more" >
-                <div style="width:90%;height:300px;float:left;overflow-y:scroll;margin-top:5px;">
+                <div style="width:90%;height:300px;float:left;overflow-y:scroll;">
                     <div class="choice" ng-repeat='choice in choices.slice(0,100) track by $index' ng-click="send(choice)">
                             {{choice}}
                     </div>
@@ -225,6 +226,12 @@ Controllers.controller('app-controller',['$scope','$http',function($scope,$http)
         }
 
 
+    }
+    $scope.on_return=function(){
+            if(android){
+                android.input($scope.input);
+                $scope.input='';
+            }
     }
     $scope.prev=function(){
         $scope.page-=1;
