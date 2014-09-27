@@ -29,6 +29,7 @@ web部分
 ======
 词库的来源是ibus-pinyin。使用python，将其转化成js的词库，进行了单字索引和头部索引。py2.js
 
+相关代码在 [https://github.com/gowithwind/fbtext](https://github.com/gowithwind/fbtext) to.py
 
 
 
